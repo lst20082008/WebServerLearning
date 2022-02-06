@@ -9,9 +9,8 @@
 #include <iostream>
 #include <fcntl.h>
 class TcpServer {
-private:
-    int _serverSock;
 public:
+    int _serverSock;
     TcpServer(unsigned int ip, short port, bool blockio);
     ~TcpServer();
     int Accept(sockaddr& clientAddr);
