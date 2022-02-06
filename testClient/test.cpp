@@ -72,18 +72,19 @@ void TestCase()
     client.Send("hello1");
     client.Send("hello2");
     client.Send("hello3");
-    while (total.size() < msg.size()) {
-        
-    }
-    ret = client.Read(msg);
-    if (ret > 0) {
-        total += msg;
-    } else {
-        std::cerr << "read failed!" << std::endl;
+    while (total.size() < 18) {
+        int ret = client.Read(msg);
+        if (ret > 0) {
+            total += msg;
+        } else {
+            std::cerr << "[error]read failed!" << std::endl;
+            break;
+        }
     }
     if (total != std::string("hello1hello2hello3")) {
         std::cerr << "test failed" << std::endl;
     }
+    
 }
 
 void *threadRun(void *arg)
